@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxPatternAudit</title>
+    <script src="../static/js/d3-v4/d3.js"></script>
+    <script src="../static/js/jquery-3.5.1.min.js"></script>
+    <script src="../static/js/echarts/echarts.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <!-- 模式选择 pattern selection -->
+            <div class="control patternSelection">
+                <div class="title">
+                    <p>Pattern Selection</p>
+                </div>
+                <div id="patternPreview" style="height:80% ">
+                    <svg id="patternSvg" style="width: 350; height:250; width:100%; border: .1rem solid black"></svg>
+                </div>
+
+                <button id="legalPersonBtn" onclick="PatternSelection().addNode('legal person')" type="button">legal person</button>
+                <button id="taxpayerBtn" onclick="PatternSelection().addNode('taxpayer')" type="button">taxpayer</button>
+                <button id="controlBtn" onclick="PatternSelection().addEdge('control')" type="button">control</button>
+                <button id="investBtn" onclick="PatternSelection().addEdge('invest')" type="button">invest</button>
+            </div>
+            <!-- 参数调整 parameter adjustment -->
+            <div class="control parameterAdjustment ">
+                <div class="title ">
+                    <p>Parameter Adjustment</p>
+                </div>
+                <label>
+                parameter1
+                <output id="parameter">.5</output>
+                <input type="range" min="0" max="1" value="0.5" step="0.01" oninput="d3.select('#parameter1').text(value)"> 
+            </label>
+                <br>
+                <label><input style="height: 30px; width:150px;" type="text"> parameter2</label>
+            </div>
+        </div>
+
+
+        <!-- 展示窗口show view -->
+        <div class="showView ">
+            <div class="title ">
+                <p>Show View</p>
+            </div>
+            <svg id="mainSvg" style="height: 800;width:1000"></svg>
+            <div class="lineView">
+                <div id="lineView1" style="height: 300px;width:400px;"></div>
+                <div id="lineView2" style="height: 300px;width:400px;"></div>
+            </div>
+
+        </div>
+        <!-- 细节展示detail view -->
+        <div class="selectView ">
+
+        </div>
+    </div>
+
+    <script src="../static/js/patternSelection.js "></script>
+
+    <script src="../static/js/mainView.js "></script>
+    <script src="../static/js/patternSuggest.js "></script>
+
+
+</body>
+
+</html>
